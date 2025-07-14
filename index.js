@@ -4,10 +4,10 @@ import dataRoute from "./src/routes/dataRoute.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
+connect();
+
 const app = express();
 const PORT = 3000;
-
-connect();
 
 app.use(cors());
 app.use(express.json());
