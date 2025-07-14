@@ -7,9 +7,7 @@ export let status = "ok";
 
 async function connect() {
     try {
-        await mongoose.connect(
-            "mongodb+srv://conghieudev3104:XByQ2w8VYY5ezQtp@cluster0.gjho4bw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-        );
+        await mongoose.connect(process.env.MONGODB_URL);
         status = "alright";
         console.log("connect successfull");
     } catch (err) {
