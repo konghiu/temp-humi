@@ -33,7 +33,7 @@ const dataController = {
     dataGet: async (req, res) => {
         try {
             const data = await Data.find();
-            // await new Count({ type: "count", index: 0 }).save();
+            // await new Count({ type: "count", index: 0 }).save(); XByQ2w8VYY5ezQtp
             res.status(200).json(data);
         } catch (err) {
             console.log(err);
