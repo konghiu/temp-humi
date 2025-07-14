@@ -1,5 +1,5 @@
 import express from "express";
-import connect from "./src/db/index.js";
+import connect, { status } from "./src/db/index.js";
 import dataRoute from "./src/routes/dataRoute.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -23,6 +23,9 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use("/", (req, res) => {
+    res.status(200).send(status);
+});
 app.use("/data", dataRoute);
 
 app.listen(PORT, (error) => {
