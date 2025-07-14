@@ -1,5 +1,5 @@
 import Count from "../models/Count.js";
-import Data from "../models/data.js";
+import Data from "../models/Data.js";
 
 let status_lamb = 0;
 let status_fan = 0;
