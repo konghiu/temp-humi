@@ -3,15 +3,17 @@ import connect, { status } from "./src/db/index.js";
 import dataRoute from "./src/routes/dataRoute.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
 
-connect();
+dotenv.config();
 
 const app = express();
 const PORT = 3000;
 
+connect();
 app.use(cors());
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(cookieParser());
 
 app.use((req, res, next) => {
@@ -23,10 +25,10 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use("/data", dataRoute);
 app.use("/", (req, res) => {
     res.status(200).send(status);
 });
-app.use("/data", dataRoute);
 
 app.listen(PORT, (error) => {
     if (!error) console.log("http://localhost:" + PORT);
