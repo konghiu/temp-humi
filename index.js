@@ -4,14 +4,13 @@ import dataRoute from "./src/routes/dataRoute.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
-import mongoose from "mongoose";
 
 dotenv.config();
 
 const app = express();
 const PORT = 3000;
 
-// connect();
+await connect();
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -28,15 +27,16 @@ app.use((req, res, next) => {
 
 app.use("/data", dataRoute);
 app.use("/", async (req, res) => {
-    // res.status(200).send(status);
-    try {
-        await mongoose.connect(process.env.MONGODB_URL);
-        res.status(200).json({
-            message: "MongoDB connected successfully!",
-        });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
+    res.status(200).send(status);
+    // try {
+    // await mongoose.connect(process.env.MONGODB_URL);
+    // await connect();
+    //     res.status(200).json({
+    //         message: "MongoDB connected successfully!",
+    //     });
+    // } catch (error) {
+    //     res.status(500).json({ error: error.message });
+    // }
 });
 
 app.listen(PORT, (error) => {
